@@ -3,20 +3,36 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Disney Hangman</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	
 </head>
 <body>
 
+	<img id="disneyland" src="https://vignette.wikia.nocookie.net/disney/images/c/c1/Walt_disney_pictures.jpg/revision/latest/scale-to-width-down/670?cb=20130703150452" alt="Disney Castle">
+
+
 	<div>
-		<h1>Disney Hangman</h1>
+		<h1 id = "game-title">Disney Hangman</h1>
+		
+		<!-- <img id="disneyland" src="https://vignette.wikia.nocookie.net/disney/images/c/c1/Walt_disney_pictures.jpg/revision/latest/scale-to-width-down/670?cb=20130703150452" alt="Disney Castle"> -->
+
+
+			<h2 id = "start">Press Spacebar to start</h2>
+			<!-- <input id = "button" type="button" value="Reload Page" onClick="window.location.reload()"> -->
+			<br>
+
+
 	
 		<div>
 
 			<span>lives:</span> <span id="lives"></span>
-			<span>incorrect letters</span><span id="incorrect-letters"></span>
+			<br>
+			<span>incorrect letters: </span><span id="incorrect-letters"></span>
 
 			<h2>Let's Play! <span id="computer-guess"><strong>Start</strong></span></h2>
-		
+
+			
+
 		
 
 		</div>
@@ -24,6 +40,8 @@
 	</div>
 
 	<script type="text/javascript">
+
+
 
 	// 	var wordBank=["Mickey", "Cinderella", "Goofy", "Walt Disney", "Pinocchio", "Disneyland", "Aladdin"];
 
@@ -38,12 +56,14 @@
 			// first the computer should randomly choose a word from the word bank
 			
 			var randomWord = wordBank[Math.floor(wordBank.length * Math.random())];
-				var lives = 8;
+				var lives =  11;
 				var incorrectLetters = "";
 				var correctLetters = "";
 
 				var computerGuess = document.getElementById("computer-guess");
 				var livesEl = document.getElementById("lives");
+
+				
 
 				document.onkeyup = function(event) {
 				computerGuess.textContent = displayWord(event);
@@ -71,6 +91,9 @@
 						if(key.length == 1) {
 							incorrectLetters += key;
 							lives--;
+							document.getElementById("incorrect-letters").textContent = incorrectLetters;
+							document.getElementById("lives").textContent = lives;
+
 						}
 					}
 				}
@@ -87,53 +110,30 @@
 					displayText += "_";
 				}
 			}
+			if(displayText.indexOf("_") === -1){
+					setTimeout(function(){
+				    alert("YOU GOT IT!!!")},1000);
 
+					// if(alert('Alert For your User!')){}
+					// else    window.location.reload(); 
+
+
+				
+
+					// alert("YOU GOT It!!!!");
+				}
+
+
+				if(lives === 0){
+					setTimeout(function(){
+				    alert("GAME OVER!!!")},1000);
+				}
 			return displayText;
 			
 			};
 
 
-
-		// if(randomWord === "Mickey"){
-		// 	return ("______");
-		// }
-
-		// if(randomWord === "Aladdin"){
-		// 	return ("_______");
-		// }
-
-		// if(randomWord === "Cinderella"){
-		// 	return ("__________");
-		// }
-
-		// if(randomWord === "Goofy"){
-		// 	return ("_____");
-		// }
-
-		// if(randomWord === "Walt Disney"){
-		// 	return ("____ ______");
-		// }
-
-		// if(randomWord === "Pinocchio"){
-		// 	return ("_________");
-		// }
-
-		// if(randomWord === "Disneyland"){
-		// 	return ("__________");
-		// }
-
-
 	
-		
-
-
-
-
-
-	
-
-
-
 
 	// // We want to somehow display how many letters are in the word 
 	// that it chose from the word bank.
@@ -163,5 +163,6 @@
 
 
 	</script>
+	<input id = "button" type="button" value="Play Agian" onClick="window.location.reload()">
 </body>
 </html>

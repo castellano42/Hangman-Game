@@ -1,0 +1,29 @@
+#game-title{
+	text-align: center;
+	color: white;
+	font-family:"New Waltograph";
+	font-size:3em;
+
+}
+
+body{
+	background-color:#1840c9;
+	color:white;
+	font-family: "New Waltograph";
+	text-align: center;
+	font-size:2em;
+
+}
+
+#start{
+	font-size:2em;
+}
+
+#disneyland{
+	height:300px;
+	width:600px;
+}
+
+#button{
+	padding:20px;
+}
